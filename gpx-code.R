@@ -1,10 +1,15 @@
-library(plyr)
+#
+
+
+
+
+library(dplyr)
 library(stringr)
 library(lubridate)
 library(plotKML)
 library(ggmap)
 
-setwd("~/R/projects/gpx-mapping")
+setwd("~/R/projects/run-mapping")
 files <- list.files('rawdata',full.names=T) 
 #Activities <- read.csv(files[grep('Activities',files)])
 
