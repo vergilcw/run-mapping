@@ -1,17 +1,18 @@
-#
-
-
-
 
 library(dplyr)
+library(purrr)
 library(stringr)
 library(lubridate)
-library(plotKML)
+library(trackeR)
 library(ggmap)
 
-setwd("~/R/projects/run-mapping")
-files <- list.files('rawdata',full.names=T) 
+#setwd("~/R/projects/run-mapping")
+files_gpx <- list.files('rawdata', full.names=T, pattern = "\\.gpx")            
+files_tcx <- list.files('rawdata', full.names=T, pattern = "\\.tcx")
 #Activities <- read.csv(files[grep('Activities',files)])
+
+f <- files_gpx[1:2]
+
 
 
 parseGPX <- function(f){
@@ -21,6 +22,7 @@ parseGPX <- function(f){
                    format='%m/%d/%y')
    type <- unlist(strsplit(desc, ' '))[1]
   names(raw) <- seq(length(names(raw)))
+  browser()
   clean <- cbind(ldply(raw), 
                  type=type, 
                  desc=desc,
